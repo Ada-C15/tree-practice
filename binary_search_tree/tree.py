@@ -26,7 +26,7 @@ class Tree:
         return current_node
 
     # Time Complexity: O(n), O(h)
-    # Space Complexity: O(n)
+    # Space Complexity: O(1)
     def add(self, key, value = None):
         if self.root == None:
             self.root = TreeNode(key, value)
@@ -34,7 +34,7 @@ class Tree:
             self.add_helper(self.root, key, value)
 
     # Time Complexity: O(n), O(h)
-    # Space Complexity: O(n)
+    # Space Complexity: O(1)
     def find(self, key):
         # print("*** key ", key)
         # print("root ", self.root)
@@ -57,7 +57,7 @@ class Tree:
 
     # Time Complexity: O(n)
     # Space Complexity: O(n)
-    def inorder(self, res=[]):
+    def inorder(self):
         # # tree_array = []
         # if self.root:
         #     res = self.inorder(self.root.left)
@@ -142,7 +142,7 @@ class Tree:
 
 
     # Time Complexity: O(n)
-    # Space Complexity: O(n) 
+    # Space Complexity: O(1) 
     def height(self):
         if self.root == None:
             return 0
@@ -162,9 +162,42 @@ class Tree:
 
 #   # Optional Method
 #   # Time Complexity: 
-#   # Space Complexity: 
+#   # Space Complexity: O(n), O(w)
     def bfs(self):
-        pass
+        if self.root == None:
+            return []
+        
+        # print("bf ", self.helper_bf(self.root))
+        return self.helper_bf(self.root)
+
+    def helper_bf(self, node, tree_array=[]):
+        if node == None:
+            return
+        
+        queue = []
+        queue.append(node)
+        # tree_array.append({
+        #     'key': node.key,
+        #     'value': node.value
+        # })
+        # self.to_s()
+
+        while len(queue) != 0:
+            current_node = queue.pop(0)
+            tree_array.append({
+                'key': current_node.key,
+                'value': current_node.value
+            })
+            print("node pop ", current_node.key)
+
+            if current_node.left != None:
+                queue.append(current_node.left)
+            
+            if current_node.right != None:
+                queue.append(current_node.right)
+
+        return tree_array
+
 
         
 
