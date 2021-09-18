@@ -1,6 +1,26 @@
+## Getting Started
+
+As usual with a python project, create a virtual environment:
+
+```
+python3 -m venv venv
+```
+
+Then activate the virtual environment
+
+```
+source venv/bin/activate
+```
+
+Then install the required packages.
+
+```
+pip install -r requirements.txt
+```
+
 # Tree Exercise
 
-In this exercise you will implement, in Ruby, several Tree methods.
+In this exercise you will implement, in Python, several Tree methods.
 
 - `add(value)` - This method adds a key-value pair to the Binary Search Tree
 - `find(value)` - This method returns the matching value for the given key if it is in the tree and `None` if the key is not found in the tree.
