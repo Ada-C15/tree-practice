@@ -122,7 +122,26 @@ class Tree:
 #   # Time Complexity: 
 #   # Space Complexity: 
     def bfs(self):
-        pass
+        ans = []
+        queue = []
+        
+    
+        # Return Null if the tree is empty
+        if self.root:
+            queue.append(self.root)
+        
+    
+        while len(queue) > 0:
+            
+            currNode = queue.pop(0)
+
+            if currNode.left:
+                queue.append(currNode.left)
+            if currNode.right:
+                queue.append(currNode.right)
+
+            ans.append({"key":currNode.key,"value": currNode.value})
+        return ans
 
         
 
