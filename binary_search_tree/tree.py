@@ -144,9 +144,27 @@ class Tree:
 #   # Time Complexity: O(log n)
 #   # Space Complexity: O(1)
     def bfs(self):
-        pass
-
+        tree_elements = []
+        queue = []
         
+    
+        if self.root:
+            queue.append(self.root)
+        
+    
+        while len(queue) > 0:
+            
+            currNode = queue.pop(0)
+
+            if currNode.left:
+                queue.append(currNode.left)
+            if currNode.right:
+                queue.append(currNode.right)
+
+            tree_elements.append({
+                "key":currNode.key,
+                "value": currNode.value})
+        return tree_elements
 
 
 #   # Useful for printing
