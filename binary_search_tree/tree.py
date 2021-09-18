@@ -67,46 +67,55 @@ class Tree:
     # Time Complexity:O(n)
     # Space Complexity: O(n)
     def inorder(self):
+        result = []
         if self.root != None:
             if self.root.left != None:
             #recur on the left child
-                self.inorder(self.root.left)
+               result = self.inorder(self.root.left)
 
             #print the data of the node
-            print(self.root.val)
+            result.append(self.root.val)
             
             if self.root.right != None:
             #recur on the right child
-                self.inorder(self.root.right)
+                result = self.inorder(self.root.right)
         
+        return result
 
     # Time Complexity: O(n)
     # Space Complexity: O(n) 
     def preorder(self):
-        
+        result = []
+
         if self.root != None:
             #print the data of the node
-            print(self.root.val)
+            result.append(self.root.val)
 
+            if self.root.left != None:
             #recur  on the left child
-            self.preorder(self.root.left)
+                result = self.preorder(self.root.left)
 
+            if self.root.right != None:
             #recur on the right child
-            self.preorder(self.root.right)
-
-
+                result = self.preorder(self.root.right)
+        
+        return result
 
     # Time Complexity: O(n)
     # Space Complexity: O(n) 
     def postorder(self):
+        result = []
         if self.root != None:
 
-            #recur  on the left child
-            self.preorder(self.root.left)
+            #recur on the left child
+            if self.root.left != None:
+                result = self.preorder(self.root.left)
             #recur on the right child
-            self.preorder(self.root.right)
+            if self.root.right != None:
+                resutl = self.preorder(self.root.right)
             #print the data of the node
-            print(self.root.val)
+            result.append(self.root.val)
+        return result
 
     # Time Complexity: O(n)
     # Space Complexity: O(1)  
