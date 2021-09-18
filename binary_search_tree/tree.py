@@ -120,7 +120,6 @@ class Tree:
         if self.root == None:
             return 0
 
-        print("height ", self.helper_height(self.root))
         return self.helper_height(self.root)
 
     def helper_height(self, node):
