@@ -126,11 +126,18 @@ class Tree:
 
 
 
-
     # Time Complexity: O(log n)
     # Space Complexity:  O(1)   
+    def height_helper(self, current_node):
+        if current_node == None:
+            return 0
+        left_node = self.height_helper(current_node.left)
+        right_node = self.height_helper(current_node.right)
+
+        return max(left_node, right_node) + 1
+    
     def height(self):
-        pass
+        return self.height_helper(self.root)
 
 
 #   # Optional Method
