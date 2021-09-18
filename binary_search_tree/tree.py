@@ -64,34 +64,69 @@ class Tree:
                  current = current.left
 
 
-    # Time Complexity: 
-    # Space Complexity: 
+    # Time Complexity:O(n)
+    # Space Complexity: O(n)
     def inorder(self):
-        pass
+        if self.root != None:
+            if self.root.left != None:
+            #recur on the left child
+                self.inorder(self.root.left)
 
-    # Time Complexity: 
-    # Space Complexity:     
+            #print the data of the node
+            print(self.root.val)
+            
+            if self.root.right != None:
+            #recur on the right child
+                self.inorder(self.root.right)
+        
+
+    # Time Complexity: O(n)
+    # Space Complexity: O(n) 
     def preorder(self):
-        pass
+        
+        if self.root != None:
+            #print the data of the node
+            print(self.root.val)
 
-    # Time Complexity: 
-    # Space Complexity:     
+            #recur  on the left child
+            self.preorder(self.root.left)
+
+            #recur on the right child
+            self.preorder(self.root.right)
+
+
+
+    # Time Complexity: O(n)
+    # Space Complexity: O(n) 
     def postorder(self):
-        pass
+        if self.root != None:
 
-    # Time Complexity: 
-    # Space Complexity:     
+            #recur  on the left child
+            self.preorder(self.root.left)
+            #recur on the right child
+            self.preorder(self.root.right)
+            #print the data of the node
+            print(self.root.val)
+
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)  
     def height(self):
-        pass
+        if self.root == None:
+            return 0
+        
+        return self.find_max(self.height(self.root.left), self.height(self.root.right))+1
 
+    def find_max(self, a, b):
+        if(a>=b):
+            return a
+        else:
+            return b
 
 #   # Optional Method
 #   # Time Complexity: 
 #   # Space Complexity: 
     def bfs(self):
         pass
-
-        
 
 
 #   # Useful for printing
