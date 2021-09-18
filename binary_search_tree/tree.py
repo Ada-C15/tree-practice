@@ -25,8 +25,10 @@ class Tree:
         else:
             current_node.right = self.add_helper(current_node.right, key, value)
         return current_node
-    # Time Complexity: 
-    # Space Complexity: 
+
+
+    # Time Complexity:O(log n) 
+    # Space Complexity:O(1)
     def add(self, key, value = None):
         if self.root == None:
             self.root = TreeNode(key, value)
@@ -35,8 +37,8 @@ class Tree:
 
 
 
-    # Time Complexity: 
-    # Space Complexity: 
+    # Time Complexity: O(log n) 
+    # Space Complexity: O(1)
     def find(self, key):
         if self.root == None:
             return None
@@ -50,16 +52,41 @@ class Tree:
             else:
                 current = current.left
         return None
+    def inorder_helper_f(self,current_node, in_order_list):
+        if current_node == None:
+            return in_order_list
+        
+        self.inorder_helper_f(current_node.left, in_order_list)
+        in_order_list.append({"key": current_node.key,"value":current_node.value})
+        self.inorder_helper_f(current_node.right, in_order_list)
+        return
 
-    # Time Complexity: 
-    # Space Complexity: 
+    # Time Complexity: O(log n) 
+    # Space Complexity: O(1)
     def inorder(self):
-        pass
+        in_order_list = []
+        
+        self.inorder_helper_f(self.root,in_order_list)
+        return in_order_list
+
+    def preorder_helper_f(self,current_node,  preorder_list):
+        if current_node == None:
+            return  preorder_list
+        
+        preorder_list.append({"key": current_node.key,"value":current_node.value})
+
+        self.preorder_helper_f(current_node.left, preorder_list)
+        self.preorder_helper_f(current_node.right, preorder_list)
+        return
+
 
     # Time Complexity: 
     # Space Complexity:     
     def preorder(self):
-        pass
+        preorder_list = []
+
+        self.preorder_helper_f(self.root,preorder_list)
+        return preorder_list
 
     # Time Complexity: 
     # Space Complexity:     
