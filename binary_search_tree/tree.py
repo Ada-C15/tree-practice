@@ -59,17 +59,17 @@ class Tree:
         self.inorder_helper_f(current_node.left, in_order_list)
         in_order_list.append({"key": current_node.key,"value":current_node.value})
         self.inorder_helper_f(current_node.right, in_order_list)
-        return
+        return in_order_list
 
     # Time Complexity: O(log n) 
     # Space Complexity: O(1)
     def inorder(self):
         in_order_list = []
         
-        self.inorder_helper_f(self.root,in_order_list)
-        return in_order_list
+        return self.inorder_helper_f(self.root,in_order_list)
+        
 
-    def preorder_helper_f(self,current_node,  preorder_list):
+    def preorder_helper_f(self,current_node,preorder_list):
         if current_node == None:
             return  preorder_list
         
@@ -77,24 +77,35 @@ class Tree:
 
         self.preorder_helper_f(current_node.left, preorder_list)
         self.preorder_helper_f(current_node.right, preorder_list)
-        return
+        return preorder_list
 
 
-    # Time Complexity: 
-    # Space Complexity:     
+    # Time Complexity:O(log n) 
+    # Space Complexity: O(1)   
     def preorder(self):
         preorder_list = []
 
-        self.preorder_helper_f(self.root,preorder_list)
-        return preorder_list
+        return self.preorder_helper_f(self.root,preorder_list)
 
-    # Time Complexity: 
-    # Space Complexity:     
+    def postorder_helper_f(self,current_node,  post_order_list):
+        if current_node == None:
+            return  post_order_list
+
+        self.postorder_helper_f(current_node.left, post_order_list)
+        self.postorder_helper_f(current_node.right, post_order_list)
+
+        post_order_list.append({"key": current_node.key,"value":current_node.value})
+        
+        return post_order_list
+    # Time Complexity: O(log n)
+    # Space Complexity: O(1)     
     def postorder(self):
-        pass
+        post_order_list = []
 
-    # Time Complexity: 
-    # Space Complexity:     
+        return self.postorder_helper_f(self.root,post_order_list)
+
+    # Time Complexity: O(log n)
+    # Space Complexity: O(1)
     def height(self):
         pass
 
