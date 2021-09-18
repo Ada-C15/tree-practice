@@ -104,11 +104,19 @@ class Tree:
 
         return self.postorder_helper_f(self.root,post_order_list)
 
+    def height_helper_f(self, current_node):
+        # current_node = self.root
+        if current_node == None:
+            return 0
+
+        left_count = self.height_helper_f(current_node.left)
+        right_count = self.height_helper_f(current_node.right)
+
+        return max(left_count, right_count) + 1
     # Time Complexity: O(log n)
     # Space Complexity: O(1)
-    def height(self):
-        pass
-
+    def height (self):
+        return self.height_helper_f(self.root)
 
 #   # Optional Method
 #   # Time Complexity: 
