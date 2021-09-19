@@ -52,33 +52,37 @@ class Tree:
     # Time Complexity: O(n)
     # Space Complexity: O(n)
     def inorder(self):
+        tree_array=[]
+        
         if self.root == None:
-            return []
+            return tree_array
 
-        return self.helper_inorder(self.root)
+        return self.helper_inorder(self.root, tree_array)
 
-    def helper_inorder(self, node, tree_array=[]):
+    def helper_inorder(self, node, tree_array):
         if node == None:
             return 
 
-        self.helper_inorder(node.left)
+        self.helper_inorder(node.left, tree_array)
         tree_array.append({
             'key': node.key,
             'value': node.value
         })
-        self.helper_inorder(node.right)
+        self.helper_inorder(node.right, tree_array)
 
         return tree_array
 
     # Time Complexity: O(n)
     # Space Complexity: O(n)
     def preorder(self):
+        tree_array = []
+
         if self.root == None:
-            return []
+            return tree_array
 
-        return self.helper_preorder(self.root)
+        return self.helper_preorder(self.root, tree_array)
 
-    def helper_preorder(self, node, tree_array=[]):
+    def helper_preorder(self, node, tree_array):
         if node == None:
             return
 
@@ -86,8 +90,8 @@ class Tree:
             'key': node.key,
             'value': node.value
         })
-        self.helper_preorder(node.left)
-        self.helper_preorder(node.right)
+        self.helper_preorder(node.left, tree_array)
+        self.helper_preorder(node.right, tree_array)
         
         return tree_array
 
@@ -95,17 +99,19 @@ class Tree:
     # Time Complexity: O(n)
     # Space Complexity: O(n)
     def postorder(self):
+        tree_array = []
+
         if self.root == None:
-            return []
+            return tree_array
 
-        return self.helper_postorder(self.root)
+        return self.helper_postorder(self.root, tree_array)
 
-    def helper_postorder(self, node, tree_array=[]):
+    def helper_postorder(self, node, tree_array):
         if node == None:
             return 
 
-        self.helper_postorder(node.left)
-        self.helper_postorder(node.right)
+        self.helper_postorder(node.left, tree_array)
+        self.helper_postorder(node.right, tree_array)
         tree_array.append({
             'key': node.key,
             'value': node.value
@@ -136,12 +142,14 @@ class Tree:
 #   # Time Complexity: O(n)
 #   # Space Complexity: O(n), O(w)
     def bfs(self):
-        if self.root == None:
-            return []
-        
-        return self.helper_bf(self.root)
+        tree_array = []
 
-    def helper_bf(self, node, tree_array=[]):
+        if self.root == None:
+            return tree_array
+        
+        return self.helper_bf(self.root, tree_array)
+
+    def helper_bf(self, node, tree_array):
         if node == None:
             return
         
