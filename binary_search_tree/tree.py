@@ -26,7 +26,7 @@ class Tree:
 
         return current_node
 
-
+#===========ADD==================================================================
     # Time Complexity: 
     # Space Complexity: 
     def add(self, key, value = None):
@@ -48,6 +48,8 @@ class Tree:
             # else:
             #     parent.right = TreeNode(key, value)
 
+
+#========FIND======================================================================
     # Time Complexity: 
     # Space Complexity: 
     def find(self, key):
@@ -63,67 +65,90 @@ class Tree:
             else:
                  current = current.left
 
+#===========INORDER==============================================================
 
     # Time Complexity:O(n)
     # Space Complexity: O(n)
     def inorder(self):
         result = []
-        if self.root != None:
-            if self.root.left != None:
+        return self.inorder_helper(self.root, result)
+    
+    def inorder_helper(self, current, result):
+        
+        if current == None:
+            return result
+        else:
+            if current.left != None:
             #recur on the left child
-               result = self.inorder(self.root.left)
+               self.inorder_helper(current.left,result)
 
             #print the data of the node
-            result.append(self.root.val)
+            result.append({"key": current.key, "value" : current.value})
             
-            if self.root.right != None:
+            if current.right != None:
             #recur on the right child
-                result = self.inorder(self.root.right)
+                self.inorder_helper(current.right, result)
         
         return result
 
+
+#==============PREORDER=============================================================
     # Time Complexity: O(n)
     # Space Complexity: O(n) 
     def preorder(self):
         result = []
-
-        if self.root != None:
+        return self.preorder_helper(self.root, result)
+    
+    def preorder_helper(self, current, result):
+        if current == None:
+            return result
+        else:
             #print the data of the node
-            result.append(self.root.val)
+            result.append({"key": current.key, "value" : current.value})
 
-            if self.root.left != None:
+            if current.left != None:
             #recur  on the left child
-                result = self.preorder(self.root.left)
+                self.preorder_helper(current.left, result)
 
-            if self.root.right != None:
+            if current.right != None:
             #recur on the right child
-                result = self.preorder(self.root.right)
+                self.preorder_helper(current.right, result)
         
         return result
-
+    
+#====================POSTORDER======================================================
     # Time Complexity: O(n)
     # Space Complexity: O(n) 
     def postorder(self):
         result = []
-        if self.root != None:
-
+        return self.postorder_helper(self.root, result)
+    
+    def postorder_helper(self, current, result):
+        if current == None:
+            return result
+        else:
             #recur on the left child
-            if self.root.left != None:
-                result = self.preorder(self.root.left)
+            if current.left != None:
+                self.postorder_helper(current.left, result)
             #recur on the right child
             if self.root.right != None:
-                resutl = self.preorder(self.root.right)
+                self.postorder_helper(current.right, result)
             #print the data of the node
-            result.append(self.root.val)
+            result.append({"key": current.key, "value" : current.value})
         return result
 
+
+#==============HEIGHT============================================================
     # Time Complexity: O(n)
-    # Space Complexity: O(1)  
+    # Space Complexity: O(1) 
     def height(self):
-        if self.root == None:
+        return self.height_helper(self.root) 
+    
+    def height_helper(self, current):
+        if current == None:
             return 0
         
-        return self.find_max(self.height(self.root.left), self.height(self.root.right))+1
+        return self.find_max(self.height_helper(current.left), self.height_helper(current.right))+1
 
     def find_max(self, a, b):
         if(a>=b):
@@ -131,11 +156,27 @@ class Tree:
         else:
             return b
 
+#===============BREADTH FIRST SEARCH==============================================
 #   # Optional Method
 #   # Time Complexity: 
 #   # Space Complexity: 
     def bfs(self):
-        pass
+        result =[]
+        queue =[]
+        
+        if self.root:
+            queue.append(self.root)
+        
+        while len(queue) > 0:
+            current = queue.pop(0)
+            if current.left:
+                queue.append(current.left)
+            if(current.right):
+                queue.append(current.right)
+            
+            result.append({"key": current.key, "value" : current.value}) 
+        return result
+                    
 
 
 #   # Useful for printing
