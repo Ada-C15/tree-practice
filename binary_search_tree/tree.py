@@ -15,6 +15,7 @@ class Tree:
     def __init__(self):
         self.root = None
 
+#===============ADD===========================================================
     def add_helper(self, current_node, key, value):
         if current_node == None:
             return TreeNode(key, value)
@@ -26,7 +27,6 @@ class Tree:
 
         return current_node
 
-#===========ADD==================================================================
     # Time Complexity: 
     # Space Complexity: 
     def add(self, key, value = None):
@@ -50,8 +50,8 @@ class Tree:
 
 
 #========FIND======================================================================
-    # Time Complexity: 
-    # Space Complexity: 
+    # Time Complexity: O(log n) eliminate half the search space on each level of the tree
+    # Space Complexity: O(1)
     def find(self, key):
         if self.root == None:
             return None
@@ -158,9 +158,39 @@ class Tree:
 
 #===============BREADTH FIRST SEARCH==============================================
 #   # Optional Method
-#   # Time Complexity: 
-#   # Space Complexity: 
+#   # Time Complexity: O(n)
+#   # Space Complexity: O(n)
+                    
+    #recursively
     def bfs(self):
+        
+        bfs_nodes_list = []
+        
+        if (self.root):
+            bfs_nodes_list.append({"key":self.root.key, "value":self.root.value})
+            self.bfs_helper(self.root, bfs_nodes_list);
+        
+        return bfs_nodes_list
+    
+
+    def bfs_helper(self, current_node, bfs_nodes_list=[]):
+        
+        if(current_node == None):
+            return
+        
+        # add left child to process
+        if (current_node.left):
+            bfs_nodes_list.append({"key":current_node.left.key, "value":current_node.left.value})
+        
+        # add right child to process
+        if (current_node.right):
+            bfs_nodes_list.append({"key":current_node.right.key, "value":current_node.right.value})
+
+        self.bfs_helper(current_node.left, bfs_nodes_list)
+        self.bfs_helper(current_node.right, bfs_nodes_list)
+
+    def bfs_iterative(self):
+        #iteratively
         result =[]
         queue =[]
         
@@ -176,8 +206,6 @@ class Tree:
             
             result.append({"key": current.key, "value" : current.value}) 
         return result
-                    
-
 
 #   # Useful for printing
     def to_s(self):
