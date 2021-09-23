@@ -33,22 +33,26 @@ class Tree:
         else:
             self.add_helper(self.root, key, value)
 
-        #iterative solution
-        # if self.root == None:
-        #     self.root = TreeNode(key, value)
-        # else:
-        #     current = self.root
-        #     while current != None:
-        #         parent = current
-        #         if current.key > key:
-        #             current = current.left
-        #         else:
-        #             current = current.right
-            
-        #     if parent.key > key:
-        #         parent.left == TreeNode(key, value)
-        #     else:
-        #         parent.right = TreeNode(key, value)
+    #Iterative solution
+    #Time complexity: 0(log n) -  if balanced
+    #Space complexity: 0(1) - will always only increase by 1 if we add
+    # if self.root == None:
+    #     self.root = TreeNode(key, value=None)
+    # else:
+    #     previous = None
+    #     current = self.root
+
+    #     while current != None:
+    #         previous = current
+    #         if key <= current.key:
+    #             current = current.left
+    #         else:
+    #             current = current.right
+        
+    #     if key <= previous.key:
+    #         parent.left == TreeNode(key, value)
+    #     else:
+    #         parent.right = TreeNode(key, value)
 
 
     # Time Complexity: 
@@ -89,18 +93,27 @@ class Tree:
             nodes_array = nodes_array + self.inorder(current.right) 
         return nodes_array 
 
+    def preorder_helper(self, current, nodes_array):
+        if current != None:
+            nodes_array.append({"key": current.key, "value": current.value})
+            self.preorder_helper(current.left, nodes_array)
+            self.preorder_helper(current.right, nodes_array)
+        
+        #or in a more recognizably recursive format 
+        #if current = none:
+        #return None
+        # nodes_array.append({"key": current.key, "value": current.value})
+        # self.preorder_helper(current.left, nodes_array)
+        # self.preorder_helper(current.right, nodes_array)
+
+        
+    
     # Time Complexity: 
     # Space Complexity:  
     def preorder(self):
     #root, left, right
-
-        #array to record traversed nodes
         nodes_array = []
-        root = self.root
-        while root != None: 
-            nodes_array.append(root.value)
-            nodes_array.append(self.preorder(root.left.value))
-            nodes_array.append(self.preorder(root.right.value))
+        self.preorder_helper(self.root, nodes_array)
         return nodes_array
 
 
