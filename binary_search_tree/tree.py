@@ -27,8 +27,8 @@ class Tree:
 
         return current_node
 
-    # Time Complexity: 
-    # Space Complexity: 
+    # Time Complexity: O(log n) - if it is balanced
+    # Space Complexity: O(1)
     def add(self, key, value = None):
         if self.root ==None:
             self.root = TreeNode(key, value)
@@ -188,7 +188,7 @@ class Tree:
 
         self.bfs_helper(current_node.left, bfs_nodes_list)
         self.bfs_helper(current_node.right, bfs_nodes_list)
-
+#---------------------------------------------------------------------------------------------------------
     def bfs_iterative(self):
         #iteratively
         result =[]
