@@ -28,7 +28,7 @@ class Tree:
         return current_node
 
     # Time Complexity: O(log n) - if it is balanced
-    # Space Complexity: O(1)
+    # Space Complexity: O(log n)
     def add(self, key, value = None):
         if self.root ==None:
             self.root = TreeNode(key, value)
