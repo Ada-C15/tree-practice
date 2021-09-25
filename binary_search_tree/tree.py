@@ -56,8 +56,8 @@ class Tree:
 
         return current.value
 
-    # Time Complexity: 
-    # Space Complexity: 
+    # Time Complexity: O ( log n )
+    # Space Complexity: O ( n )
     # left, center, right
     def inorder(self):
         if not self.root:
@@ -78,8 +78,8 @@ class Tree:
 
         return ret_list
 
-    # Time Complexity: 
-    # Space Complexity:
+    # Time Complexity: O ( log n )
+    # Space Complexity: O ( n )
     # center, left, right     
     def preorder(self):
         if not self.root:
@@ -100,8 +100,8 @@ class Tree:
 
         return ret_list
 
-    # Time Complexity: 
-    # Space Complexity:    
+    # Time Complexity: O ( log n )
+    # Space Complexity: O ( n )
     # left, right, center 
     def postorder(self):
         if not self.root:
@@ -122,8 +122,8 @@ class Tree:
 
         return ret_list
 
-    # Time Complexity: 
-    # Space Complexity:     
+    # Time Complexity: O ( n )
+    # Space Complexity: O ( n )
     def height(self):
         if not self.root:
             return 0
@@ -143,18 +143,23 @@ class Tree:
 
 
 #   # Optional Method
-#   # Time Complexity: 
-#   # Space Complexity: 
+#   # Time Complexity: O ( n )
+#   # Space Complexity: O ( n )
     def bfs(self):
-        ret_list = [self.root]
+        if not self.root:
+            return []
+
+        process_queue = [self.root]
         index = 0
 
-        while index < len(ret_list):
-            ret_list += ret_list[index].left
-            ret_list += ret_list[index].right
+        while index < len(process_queue):
+            if process_queue[index].left:
+                process_queue.append(process_queue[index].left)
+            if process_queue[index].right:
+                process_queue.append(process_queue[index].right)
             index += 1
 
-        return ret_list
+        return [current.formatted() for current in process_queue]
 
 
 #   # Useful for printing
