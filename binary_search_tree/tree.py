@@ -63,17 +63,7 @@ class Tree:
         if not self.root:
             return []
 
-        ret_list = []
-
-        if self.root.left:
-            ret_list += self.inorder_help(self.root.left)
-
-        ret_list.append(self.root.formatted())
-
-        if self.root.right:
-            ret_list += self.inorder_help(self.root.right)
-        
-        return ret_list
+        return self.inorder_help(self.root)
 
     def inorder_help(self, current):
         ret_list = []
@@ -95,17 +85,7 @@ class Tree:
         if not self.root:
             return []
 
-        ret_list = []
-
-        ret_list.append(self.root.formatted())
-
-        if self.root.left:
-            ret_list += self.preorder_help(self.root.left)
-
-        if self.root.right:
-            ret_list += self.preorder_help(self.root.right)
-        
-        return ret_list
+        return self.preorder_help(self.root)
 
     def preorder_help(self, current):
         ret_list = []
@@ -127,17 +107,7 @@ class Tree:
         if not self.root:
             return []
 
-        ret_list = []
-
-        if self.root.left:
-            ret_list += self.postorder_help(self.root.left)
-
-        if self.root.right:
-            ret_list += self.postorder_help(self.root.right)
-
-        ret_list.append(self.root.formatted())
-        
-        return ret_list
+        return self.postorder_help(self.root)
 
     def postorder_help(self, current):
         ret_list = []
@@ -158,28 +128,15 @@ class Tree:
         if not self.root:
             return 0
 
-        if self.root.left:
-            l_height = self.height_help(self.root.left)
-        else:
-            l_height = 0
-
-        if self.root.right:
-            r_height = self.height_help(self.root.right)
-        else:
-            r_height = 0
-
-        return (1 + max(l_height, r_height))
+        return self.height_help(self.root)
 
     def height_help(self, current):
-        if current.left:
-            l_height = self.height_help(current.left)
-        else:
-            l_height = 0
+        if not current:
+            return 0
 
-        if current.right:
-            r_height = self.height_help(current.right)
-        else:
-            r_height = 0
+        l_height = self.height_help(current.left)
+
+        r_height = self.height_help(current.right)
 
         return (1 + max(l_height, r_height))
 
@@ -189,9 +146,15 @@ class Tree:
 #   # Time Complexity: 
 #   # Space Complexity: 
     def bfs(self):
-        pass
+        ret_list = [self.root]
+        index = 0
 
-        
+        while index < len(ret_list):
+            ret_list += ret_list[index].left
+            ret_list += ret_list[index].right
+            index += 1
+
+        return ret_list
 
 
 #   # Useful for printing
