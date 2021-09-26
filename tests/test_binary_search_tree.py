@@ -36,27 +36,27 @@ def test_inorder_with_empty_tree(empty_tree):
 def test_inorder_with_nodes(tree_with_nodes):
     expected_answer = [
         {
-            "key": 1, 
+            "key": 1,
             "value": "Mary"
-        }, 
+        },
         {
-            "key": 3, 
+            "key": 3,
             "value": "Paul"
-        }, 
+        },
         {
-            "key": 5, 
+            "key": 5,
             "value": "Peter"
-        }, 
+        },
         {
-            "key": 10, 
+            "key": 10,
             "value": "Karla"
-        }, 
+        },
         {
-            "key": 15, 
+            "key": 15,
             "value": "Ada"
-        }, 
+        },
         {
-            "key": 25, 
+            "key": 25,
             "value": "Kari"
         }
     ]
@@ -70,25 +70,25 @@ def test_preorder_on_empty_tree(empty_tree):
 def test_preorder_on_tree_with_nodes(tree_with_nodes):
     expected_answer = [
         {
-            "key": 5, 
+            "key": 5,
             "value": "Peter"
-        }, 
+        },
         {
-            "key": 3, 
+            "key": 3,
             "value": "Paul"
         },
         {
             "key": 1,
             "value": "Mary"
-        }, 
+        },
         {
             "key": 10,
             "value": "Karla"
-        }, 
+        },
         {
             "key": 15,
             "value": "Ada"
-        }, 
+        },
         {
             "key": 25,
             "value": "Kari"
@@ -104,21 +104,21 @@ def test_postorder_on_empty_tree(empty_tree):
 def test_postorder_on_tree_with_nodes(tree_with_nodes):
     expected_answer = [
         {
-            "key": 1, 
+            "key": 1,
             "value": "Mary"
-        }, 
+        },
         {
             "key": 3,
             "value": "Paul"
         },
         {
-            "key": 25, 
+            "key": 25,
             "value": "Kari"
-        }, 
+        },
         {
             "key": 15,
             "value": "Ada"
-        }, 
+        },
         {
             "key": 10,
             "value": "Karla"
@@ -144,32 +144,34 @@ def test_height_of_many_node_tree(tree_with_nodes):
     tree_with_nodes.add(2, "pasta")
     tree_with_nodes.add(2.5, "bread")
     assert tree_with_nodes.height() == 5
-    
+
+@pytest.mark.skip(reason="Optional Method")
 def test_bfs_with_empty_tree(empty_tree):
     assert empty_tree.bfs() == []
 
+@pytest.mark.skip(reason="Optional Method")
 def test_bfs_with_tree_with_nodes(tree_with_nodes):
     expected_answer = [
         {
-            "key": 5, 
+            "key": 5,
             "value": "Peter"
-        }, 
+        },
         {
-            "key": 3, 
+            "key": 3,
             "value": "Paul"
-        }, 
+        },
         {
-            "key": 10, 
+            "key": 10,
             "value": "Karla"
-        }, 
+        },
         {
-            "key": 1, 
+            "key": 1,
             "value": "Mary"
-        }, 
+        },
         {
             "key": 15,
             "value": "Ada"
-        }, 
+        },
         {
             "key": 25,
             "value": "Kari"
@@ -178,4 +180,3 @@ def test_bfs_with_tree_with_nodes(tree_with_nodes):
 
     answer = tree_with_nodes.bfs()
     assert answer == expected_answer
-
