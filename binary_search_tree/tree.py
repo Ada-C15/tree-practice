@@ -24,7 +24,7 @@ class Tree:
                 current_node.right, new_node)
         return current_node
 
-    # Time Complexity:O(log n)
+    # Time Complexity: O(log n)
     # Space Complexity: O(1)
     def add(self, key, value=None):
         if not self.root:
@@ -45,13 +45,11 @@ class Tree:
             right_val = self.find_helper(node.right, key)
             return right_val
 
-    # Time Complexity: O(n)
-    # Space Complexity:
+    # Time Complexity: O(log n) 
+    # Space Complexity: O(1)
     def find(self, key):
         return self.find_helper(self.root, key)
 
-    # Time Complexity:
-    # Space Complexity:
     def inorder_helper(self, node, res):
         if node == None:
             return
@@ -59,12 +57,12 @@ class Tree:
         res.append({"key": node.key, "value": node.value})
         self.inorder_helper(node.right, res)
 
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def inorder(self):
         res = []
         self.inorder_helper(self.root, res)
         return res
-        # Time Complexity:
-        # Space Complexity:
 
     def preorder_helper(self, node, res):
         if node == None:
@@ -73,6 +71,8 @@ class Tree:
         self.preorder_helper(node.left, res)
         self.preorder_helper(node.right, res)
 
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def preorder(self):
         res = []
         self.preorder_helper(self.root, res)
@@ -84,16 +84,16 @@ class Tree:
         self.postorder_helper(node.left, res)
         self.postorder_helper(node.right, res)
         res.append({"key": node.key, "value": node.value})
-    # Time Complexity:
-    # Space Complexity:
 
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def postorder(self):
         res = []
         self.postorder_helper(self.root, res)
         return res
 
-    # Time Complexity:
-    # Space Complexity:
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def height(self):
         ans = 0
         queue = []
