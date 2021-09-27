@@ -45,7 +45,7 @@ class Tree:
             right_val = self.find_helper(node.right, key)
             return right_val
 
-    # Time Complexity: O(log n) 
+    # Time Complexity: O(log n)
     # Space Complexity: O(1)
     def find(self, key):
         return self.find_helper(self.root, key)
@@ -93,7 +93,7 @@ class Tree:
         return res
 
     # Time Complexity: O(n)
-    # Space Complexity: O(n)
+    # Space Complexity: O(h)
     def height(self):
         ans = 0
         queue = []
@@ -121,11 +121,13 @@ class Tree:
 #   # Time Complexity:
 #   # Space Complexity:
 
+
     def bfs(self):
         pass
 
 
 #   # Useful for printing
+
 
     def to_s(self):
         return f"{self.inorder()}"
