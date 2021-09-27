@@ -1,5 +1,5 @@
 class TreeNode:
-    def __init__(self, key, val = None):
+    def __init__(self, key, val=None):
         if val == None:
             val = key
 
@@ -7,53 +7,125 @@ class TreeNode:
         self.value = val
         self.left = None
         self.right = None
-        
 
 
 class Tree:
     def __init__(self):
         self.root = None
 
-    # Time Complexity: 
-    # Space Complexity: 
-    def add(self, key, value = None):
-        pass
+    def add_helper(self, current_node, new_node):
+        if current_node == None:
+            return new_node
 
-    # Time Complexity: 
-    # Space Complexity: 
+        if new_node.key <= current_node.key:
+            current_node.left = self.add_helper(current_node.left, new_node)
+        else:
+            current_node.right = self.add_helper(
+                current_node.right, new_node)
+        return current_node
+
+    # Time Complexity:O(log n)
+    # Space Complexity: O(1)
+    def add(self, key, value=None):
+        if not self.root:
+            self.root = TreeNode(key, value)
+        else:
+            new_node = TreeNode(key, value)
+            self.root = self.add_helper(self.root, new_node)
+
+    def find_helper(self, node, key):
+        if not node:
+            return None
+        if node.key == key:
+            return node.value
+        if key < node.key:
+            left_val = self.find_helper(node.left, key)
+            return left_val
+        else:
+            right_val = self.find_helper(node.right, key)
+            return right_val
+
+    # Time Complexity: O(n)
+    # Space Complexity:
     def find(self, key):
-        pass
+        return self.find_helper(self.root, key)
 
-    # Time Complexity: 
-    # Space Complexity: 
+    # Time Complexity:
+    # Space Complexity:
+    def inorder_helper(self, node, res):
+        if node == None:
+            return
+        self.inorder_helper(node.left, res)
+        res.append({"key": node.key, "value": node.value})
+        self.inorder_helper(node.right, res)
+
     def inorder(self):
-        pass
+        res = []
+        self.inorder_helper(self.root, res)
+        return res
+        # Time Complexity:
+        # Space Complexity:
 
-    # Time Complexity: 
-    # Space Complexity:     
+    def preorder_helper(self, node, res):
+        if node == None:
+            return
+        res.append({"key": node.key, "value": node.value})
+        self.preorder_helper(node.left, res)
+        self.preorder_helper(node.right, res)
+
     def preorder(self):
-        pass
+        res = []
+        self.preorder_helper(self.root, res)
+        return res
 
-    # Time Complexity: 
-    # Space Complexity:     
+    def postorder_helper(self, node, res):
+        if node == None:
+            return
+        self.postorder_helper(node.left, res)
+        self.postorder_helper(node.right, res)
+        res.append({"key": node.key, "value": node.value})
+    # Time Complexity:
+    # Space Complexity:
+
     def postorder(self):
-        pass
+        res = []
+        self.postorder_helper(self.root, res)
+        return res
 
-    # Time Complexity: 
-    # Space Complexity:     
+    # Time Complexity:
+    # Space Complexity:
     def height(self):
-        pass
+        ans = 0
+        queue = []
+        if self.root == None:
+            return ans
+
+        queue.append(self.root)
+
+        while queue:
+            currSize = len(queue)
+            while currSize > 0:
+                currNode = queue.pop(0)
+                currSize -= 1
+
+                if currNode.left is not None:
+                    queue.append(currNode.left)
+                if currNode.right is not None:
+                    queue.append(currNode.right)
+
+            ans += 1
+        return ans
 
 
 #   # Optional Method
-#   # Time Complexity: 
-#   # Space Complexity: 
+#   # Time Complexity:
+#   # Space Complexity:
+
     def bfs(self):
         pass
 
-        
-
 
 #   # Useful for printing
+
     def to_s(self):
         return f"{self.inorder()}"
