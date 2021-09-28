@@ -145,11 +145,11 @@ def test_height_of_many_node_tree(tree_with_nodes):
     tree_with_nodes.add(2.5, "bread")
     assert tree_with_nodes.height() == 5
 
-@pytest.mark.skip(reason="Optional Method")
+# @pytest.mark.skip(reason="Optional Method")
 def test_bfs_with_empty_tree(empty_tree):
     assert empty_tree.bfs() == []
 
-@pytest.mark.skip(reason="Optional Method")
+# @pytest.mark.skip(reason="Optional Method")
 def test_bfs_with_tree_with_nodes(tree_with_nodes):
     expected_answer = [
         {

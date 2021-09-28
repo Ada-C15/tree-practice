@@ -12,22 +12,6 @@ class Tree:
     def __init__(self):
         self.root = None
 
-    # def add_helper(self, current, key, value=None):
-    #     if current == None:
-    #         return TreeNode(key, value)
-    #     if key <= current.key:
-    #         current.left = self.add_helper(current.left, key, value)
-    #     else:
-    #         current.right = self.add_helper(current.right, key, value)
-    #     return current
-
-    # # Time Complexity:
-    # # Space Complexity:
-    # def add(self, key, value=None):
-    #     if self.root == None:
-    #         self.root = TreeNode(key, value)
-    #     self.add_helper(self.root, key, value)
-
     def add_helper(self, current_node, new_node):
         if current_node == None:
             return new_node
@@ -115,26 +99,37 @@ class Tree:
     # Space Complexity: O(1)
     def height(self):
         return self.height_helper(self.root)
-        # if current node is None, return 0
-        # if self.root == None:
-        #     return 0
-        # else:
-        #     # otherwise, return the max height of the right and left subtrees + 1
-        #     left_height = self.height(self.root.left)
-        #     right_height = self.height(self.root.right)
-
-        #     if left_height >= right_height:
-        #         return left_height + 1
-        #     else:
-        #         return right_height + 1
-
-
 
 #   # Optional Method
-#   # Time Complexity:
-#   # Space Complexity:
+#   # Time Complexity: O(n)
+#   # Space Complexity: O(n)
     def bfs(self):
-        pass
+        # checks that there is a tree
+        traversal_list = []
+
+        if self.root == None:
+            return traversal_list
+        else:
+            traversal_list.append({'key': self.root.key, 'value': self.root.value})
+
+        # initiates queue to keep track of searched nodes
+        queue = [self.root]
+
+        # dequeues the first node and stores in current to check for child nodes
+        while len(queue) > 0:
+            current = queue.pop(0)
+
+            # if the current node has a left or a right child, append it to the back of the queue
+            if current.left != None:
+                queue.append(current.left)
+                traversal_list.append({'key': current.left.key, 'value': current.left.value})
+
+            # checks for a right child in a separate if statement, because if there is a left and a right, we want to append both
+            if current.right != None:
+                queue.append(current.right)
+                traversal_list.append({'key': current.right.key, 'value': current.right.value})
+
+        return traversal_list
 
 #   # Useful for printing
     def to_s(self):
