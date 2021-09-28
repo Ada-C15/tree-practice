@@ -22,19 +22,7 @@ class Tree:
         if self.root == None:
             self.root = TreeNode(key, value)
         else:
-            self.add_helper(self.root, key, value)
-            # parent = None
-            # current = self.root
-            # while current != None:
-            #     parent = current
-            #     if current.key > key:
-            #         current = current.left
-            #     else:
-            #         current = current.right
-            # if parent.key > key:
-            #     parent.left = TreeNode(key, value)
-            # else:
-            #     parent.right = TreeNode(key, value)   
+            self.add_helper(self.root, key, value) 
     
     def add_helper(self, current_node, key, value):
         if current_node == None:
@@ -128,27 +116,3 @@ class Tree:
 #   # Useful for printing
     def to_s(self):
         return f"{self.inorder()}"
-
-
-# REMOVE LATER
-# for testing purposes ... 
-tree = Tree()
-print(tree.root == None)
-tree.add(5, "Piper")
-tree.add(7, "Bowen")
-tree.add(10)
-tree.add(3)
-tree.add(4)
-
-print(tree.root.key == 5)
-print(tree.root.right.key == 7)
-print(tree.root.right.right.key == 10)
-print(tree.root.left.key == 3)
-print(tree.root.left.right.key == 4)
-
-print(tree.find(5) == "Piper")
-print(tree.find(7) == "Bowen")
-print(tree.find(4) == 4)
-
-tree.preorder()
-tree.postorder()
