@@ -17,7 +17,7 @@ class Tree:
 
 
     # Time Complexity: O(log n) if balanced
-    # Space Complexity: 
+    # Space Complexity: O(log n)
     def add(self, key, value = None):
         if self.root == None:
             self.root = TreeNode(key, value)
@@ -35,7 +35,7 @@ class Tree:
 
 
     # Time Complexity: O(log n) if balanced 
-    # Space Complexity: 
+    # Space Complexity: O(1)
     def find(self, key):
         return self.find_helper(self.root, key)
 
@@ -49,8 +49,8 @@ class Tree:
         return self.find_helper(current.right, key)
 
 
-    # Time Complexity: 
-    # Space Complexity: 
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def inorder(self):
         traversal_list = []
         self.inorder_helper(self.root, traversal_list)
@@ -63,8 +63,8 @@ class Tree:
             self.inorder_helper(current.right, traversal_list)
 
 
-    # Time Complexity: 
-    # Space Complexity:     
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)  
     def preorder(self):
         traversal_list = []
         self.preorder_helper(self.root, traversal_list)
@@ -77,8 +77,8 @@ class Tree:
             self.preorder_helper(current.right, traversal_list)
 
 
-    # Time Complexity: 
-    # Space Complexity:     
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)  
     def postorder(self):
         traversal_list = []
         self.postorder_helper(self.root, traversal_list)
@@ -92,7 +92,7 @@ class Tree:
 
 
     # Time Complexity: O(n)
-    # Space Complexity: O(n)     
+    # Space Complexity: O(log n)     
     def height(self):
         return self.height_helper(self.root)
 
