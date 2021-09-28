@@ -46,7 +46,6 @@ class Tree:
         return current_node
 
 
-# REWRITE RECURSIVELY -- EXAMPLE IN READING FROM CLASS
     # Time Complexity: O(log n) if balanced 
     # Space Complexity: 
     def find(self, key):
@@ -104,10 +103,17 @@ class Tree:
             traversal_list.append(current.dict())
 
 
-    # Time Complexity: 
-    # Space Complexity:     
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)     
     def height(self):
-        pass
+        return self.height_helper(self.root)
+
+    def height_helper(self, current):
+        if current == None:
+            return 0
+        left_subtree_height = self.height_helper(current.left)
+        right_subtree_height = self.height_helper(current.right)
+        return max(left_subtree_height, right_subtree_height) + 1
 
 
 #   # Optional Method
