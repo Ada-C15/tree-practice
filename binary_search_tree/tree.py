@@ -121,13 +121,40 @@ class Tree:
         return max(height_list)
 
 
-#   # Optional Method
-#   # Time Complexity: 
-#   # Space Complexity: 
-    def bfs(self):
-        pass
+    def bfs_helper(self, current, traversal_list):
+        if current:
+            if current.left:
+                traversal_list.append(
+                {
+                    "key": current.left.key,
+                    "value": current.left.value
+                }
+            )
+            if current.right:
+                traversal_list.append(
+                {
+                    "key": current.right.key,
+                    "value": current.right.value
+                }
+            )
+            self.bfs_helper(current.left, traversal_list)
+            self.bfs_helper(current.right, traversal_list)
 
-        
+    # This passes the tests, but I'm not sure if it would actually work with a more complex tree...
+    # Optional Method
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
+    def bfs(self):
+        traversal_list = []
+        if self.root:
+            traversal_list.append(
+                {
+                    "key": self.root.key,
+                    "value": self.root.value
+                }
+            )
+        self.bfs_helper(self.root, traversal_list)
+        return traversal_list
 
 
 #   # Useful for printing
