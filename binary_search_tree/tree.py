@@ -80,7 +80,7 @@ class Tree:
         else:
             if current.left != None:
             #recur on the left child
-               self.inorder_helper(current.left,result)
+               self.inorder_helper(current.left, result)
 
             #print the data of the node
             result.append({"key": current.key, "value" : current.value})
