@@ -9,7 +9,6 @@ class TreeNode:
         self.right = None
         
 
-
 class Tree:
     def __init__(self):
         self.root = None
@@ -24,8 +23,8 @@ class Tree:
             current_node.right = self.add_helper(current_node.right, key, value)
         return current_node
     
-    # Time Complexity: 
-    # Space Complexity: 
+    # Time Complexity: O(1) constant b/c only 1 node added each time function is used
+    # Space Complexity: O(1) 
     def add(self, key, value = None):
 
         if self.root == None:
@@ -55,8 +54,8 @@ class Tree:
     #         parent.right = TreeNode(key, value)
 
 
-    # Time Complexity: 
-    # Space Complexity: 
+    # Time Complexity: O(n)/relative to number of nodes in the tree
+    # Space Complexity: O(1)/constant becuase nothing is created or removed
     def find(self, key):
 
         if self.root == None:
@@ -74,71 +73,67 @@ class Tree:
         return None
 
 
-    def inorder_helper(self):
-        pass
+    def inorder_helper(self, current, nodes_array):
+        #Why do i need this helper to make this traversal work?
+        if current != None:
+            self.inorder_helper(current.left, nodes_array)
+            nodes_array.append({"key": current.key, "value": current.value})
+            self.inorder_helper(current.right, nodes_array)
 
-    # Time Complexity: 
-    # Space Complexity: 
+    # Time Complexity: O(n)/related to the number of nodes in the tree
+    # Space Complexity: O(1)/nothing is added
     def inorder(self):
     #left, root, right
         nodes_array = []
-        current =self.root
-
-        if self.root == None:
-            return []
-
-        while current != None:
-            nodes_array = self.inorder(current.left)
-            nodes_array.append(current.value)
-            nodes_array = nodes_array + self.inorder(current.right) 
+        self.inorder_helper(self.root, nodes_array)
         return nodes_array 
 
-    def preorder_helper(self, current, nodes_array):
+    def _preorder_helper(self, current, nodes_array):
         if current != None:
             nodes_array.append({"key": current.key, "value": current.value})
-            self.preorder_helper(current.left, nodes_array)
-            self.preorder_helper(current.right, nodes_array)
-        
-        #or in a more recognizably recursive format 
-        #if current = none:
-        #return None
-        # nodes_array.append({"key": current.key, "value": current.value})
-        # self.preorder_helper(current.left, nodes_array)
-        # self.preorder_helper(current.right, nodes_array)
-
-        
+            self._preorder_helper(current.left, nodes_array)
+            self._preorder_helper(current.right, nodes_array) 
     
-    # Time Complexity: 
-    # Space Complexity:  
+    # Time Complexity: O(n)/related to the number of nodes in the tree
+    # Space Complexity: O(1)/nothing is added
     def preorder(self):
     #root, left, right
+
+    #create the nodes array here so that its only created here
         nodes_array = []
-        self.preorder_helper(self.root, nodes_array)
+        self._preorder_helper(self.root, nodes_array)
         return nodes_array
 
+    def _postorder_helper(self, current, nodes_array):
+        if current == None:
+            return None
+        
+        self._postorder_helper(current.left, nodes_array)
+        self._postorder_helper(current.right, nodes_array)
+        nodes_array.append({"key": current.key, "value": current.value})
 
-    # Time Complexity: 
-    # Space Complexity:      
+    # Time Complexity: O(n)/related to the number of nodes in the tree
+    # Space Complexity: O(1)/nothing is added   
     def postorder(self):
     #left, right, root
         nodes_array = []
         if self.root != None:
-            nodes_array.append(self.postorder(self.root.left))
-            nodes_array.append(self.postorder(self.root.right))
+            self._postorder_helper(self.root, nodes_array)
         return nodes_array
 
-    def height_helper(self):
-        pass
+    def height_helper(self, current):
 
-    # Time Complexity: 
-    # Space Complexity:     
-    def height(self):
-
-        root = self.root
-        if root == None:
+        if current == None:
             return 0
         
-        return 1 + max(self.height(root.left), self.height(root.right))
+        return 1 + max(self.height_helper(current.left), self.height_helper(current.right))
+
+
+    # Time Complexity: O(n)/related to the number of nodes in the tree
+    # Space Complexity: O(1)/nothing is added  
+    def height(self):
+
+        return self.height_helper(self.root)
         
         #other possibilites...
         # left = self.height(root.left)
@@ -160,8 +155,26 @@ class Tree:
 #   # Time Complexity: 
 #   # Space Complexity: 
     def bfs(self):
-        pass
+    #method returns an array with the tree elements in a level-by-level order 
+        current = self.root
+        node_values = []
+        queue = []
+        
+        # if current == None:
+        #     return []
+        # else:
+        queue.append(current)
 
+        while len(queue) > 0:
+            current = queue.pop(0)
+            node_values.append({"key": current.key, "value": current.value})
+
+            if(current.left):
+                queue.append(current.left)
+            if(current.right):
+                queue.append(current.right)
+        
+        return node_values
 
 #   # Useful for printing
     def to_s(self):
@@ -184,7 +197,7 @@ tree.add(4)
 # print(tree.find(5) == "Ruthie")
 # print(tree.find(7) == 'Ada')
 # print(tree.find(4) == 4)
-print(tree.height_helper())
+# print(tree.height())
 
 
 # def delete_node(self, key):
