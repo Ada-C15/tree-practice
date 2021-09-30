@@ -49,20 +49,59 @@ class Tree:
                 return current.value
         return None
 
-    # Time Complexity: 
-    # Space Complexity: 
-    def inorder(self):
-        pass
+    def inorder_helper(self, current, traversal_list):
+        if current:
+            self.inorder_helper(current.left, traversal_list)
+            traversal_list.append(
+                {
+                    "key": current.key,
+                    "value": current.value
+                }
+            )
+            self.inorder_helper(current.right, traversal_list)
 
-    # Time Complexity: 
+    # Time Complexity: O(recursion craziness)
+    # Space Complexity:
+    def inorder(self):
+        traversal_list = []
+        self.inorder_helper(self.root, traversal_list)
+        print(traversal_list)
+        return traversal_list
+
+    def preorder_helper(self, current, traversal_list):
+        if current:
+            traversal_list.append(
+                {
+                    "key": current.key,
+                    "value": current.value
+                }
+            )
+            self.preorder_helper(current.left, traversal_list)
+            self.preorder_helper(current.right, traversal_list)
+    
+    # Time Complexity: O(terrible)
     # Space Complexity:     
     def preorder(self):
-        pass
+        traversal_list = []
+        self.preorder_helper(self.root, traversal_list)
+        return traversal_list
 
-    # Time Complexity: 
-    # Space Complexity:     
+    def postorder_helper(self, current, traversal_list):
+        if current:
+            self.postorder_helper(current.left, traversal_list)
+            self.postorder_helper(current.right, traversal_list)
+            traversal_list.append(
+                {
+                    "key": current.key,
+                    "value": current.value
+                }
+            )
+    # Time Complexity: O(recursion)
+    # Space Complexity:
     def postorder(self):
-        pass
+        traversal_list = []
+        self.postorder_helper(self.root, traversal_list)
+        return traversal_list
 
     # Time Complexity: 
     # Space Complexity:     
