@@ -160,10 +160,10 @@ class Tree:
         node_values = []
         queue = []
         
-        # if current == None:
-        #     return []
-        # else:
-        queue.append(current)
+        if current == None:
+            return []
+        else:
+            queue.append(current)
 
         while len(queue) > 0:
             current = queue.pop(0)
