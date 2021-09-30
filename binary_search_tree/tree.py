@@ -59,7 +59,6 @@ class Tree:
                 }
             )
             self.inorder_helper(current.right, traversal_list)
-
     # Time Complexity: O(recursion craziness)
     # Space Complexity:
     def inorder(self):
@@ -78,7 +77,6 @@ class Tree:
             )
             self.preorder_helper(current.left, traversal_list)
             self.preorder_helper(current.right, traversal_list)
-    
     # Time Complexity: O(terrible)
     # Space Complexity:     
     def preorder(self):
@@ -103,10 +101,20 @@ class Tree:
         self.postorder_helper(self.root, traversal_list)
         return traversal_list
 
-    # Time Complexity: 
+    def height_helper(self, current, height_list, height):
+        if current:
+            height += 1
+            self.height_helper(current.left, height_list, height)
+            self.height_helper(current.right, height_list, height)
+        height_list.append(height)
+
+    # Time Complexity:
     # Space Complexity:     
     def height(self):
-        pass
+        height_list = []
+        height = 0
+        self.height_helper(self.root, height_list, height)
+        return max(height_list)
 
 
 #   # Optional Method
