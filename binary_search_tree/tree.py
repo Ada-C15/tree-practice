@@ -14,8 +14,8 @@ class Tree:
     def __init__(self):
         self.root = None
 
-    # Time Complexity: 
-    # Space Complexity: 
+    # Time Complexity: O(log n)
+    # Space Complexity: O(1)
     def add(self, key, value = None):
         new_node = TreeNode(key, value)
         if self.root == None:
@@ -37,7 +37,7 @@ class Tree:
             previous.right = new_node
 
     # Time Complexity: O(log n)
-    # Space Complexity: 
+    # Space Complexity: O(1)
     def find(self, key):
         current = self.root
         while current:
@@ -59,8 +59,9 @@ class Tree:
                 }
             )
             self.inorder_helper(current.right, traversal_list)
-    # Time Complexity: O(recursion craziness)
-    # Space Complexity:
+
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)?
     def inorder(self):
         traversal_list = []
         self.inorder_helper(self.root, traversal_list)
@@ -77,8 +78,9 @@ class Tree:
             )
             self.preorder_helper(current.left, traversal_list)
             self.preorder_helper(current.right, traversal_list)
-    # Time Complexity: O(terrible)
-    # Space Complexity:     
+
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)    
     def preorder(self):
         traversal_list = []
         self.preorder_helper(self.root, traversal_list)
@@ -94,8 +96,9 @@ class Tree:
                     "value": current.value
                 }
             )
-    # Time Complexity: O(recursion)
-    # Space Complexity:
+
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def postorder(self):
         traversal_list = []
         self.postorder_helper(self.root, traversal_list)
@@ -108,8 +111,9 @@ class Tree:
             self.height_helper(current.right, height_list, height)
         height_list.append(height)
 
-    # Time Complexity:
-    # Space Complexity:     
+    # Not sure this is the best way to find height
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def height(self):
         height_list = []
         height = 0
