@@ -74,7 +74,7 @@ class Tree:
         not a single node itself i.e. Tree.add(), not TreeNode.add()
         
         Time Complexity: O(log n)
-        Space Complexity: O(n)
+        Space Complexity: O(log n) for a balanced tree 
         """
         # if there is no root node, create one and assign it to the root
         if self.root == None:
@@ -90,7 +90,7 @@ class Tree:
         with that key, and return None if there is no node there
 
         Time Complexity: O(log n)
-        Space Complexity: O(n)
+        Space Complexity: O(1) because you're not changing the tree
         """
         # 1. If there are no nodes in the tree, return None:
         if self.root == None:
@@ -228,7 +228,7 @@ class Tree:
         will be directly proportional to the number of nodes
 
         Time Complexity: O(n) 
-        Space Complexity: O(n)
+        Space Complexity: O(log n) for a balanced tree 
         """
 
         if self.root != None:
