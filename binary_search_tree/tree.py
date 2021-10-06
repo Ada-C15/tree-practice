@@ -79,15 +79,12 @@ class Tree:
         if current == None:
             return result
         else:
-            #print the data of the node
             result.append({"key": current.key, "value" : current.value})
 
             if current.left != None:
-            #recur  on the left child
                 self.preorder_helper(current.left, result)
 
             if current.right != None:
-            #recur on the right child
                 self.preorder_helper(current.right, result)
         
         return result
@@ -102,13 +99,10 @@ class Tree:
         if current == None:
             return result
         else:
-            #recur on the left child
             if current.left != None:
                 self.postorder_helper(current.left, result)
-            #recur on the right child
             if self.root.right != None:
                 self.postorder_helper(current.right, result)
-            #print the data of the node
             result.append({"key": current.key, "value" : current.value})
         return result
 
