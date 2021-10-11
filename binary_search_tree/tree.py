@@ -169,7 +169,7 @@ class Tree:
         if not current:
             return 0
         height_left = self.height_helper(current.left)
-        height_right = self.height(current.right)
+        height_right = self.height_helper(current.right)
         return max(height_left, height_right) + 1
         
         # traverse the left
