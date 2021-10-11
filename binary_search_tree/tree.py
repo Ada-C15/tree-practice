@@ -111,8 +111,8 @@ class Tree:
     # Space Complexity: 
     def inorder(self):
         traversal_list = []
-        self.preorder_helper(self.root, traversal_list)
-        print(traversal_list)
+        self.inorder_helper(self.root, traversal_list)
+        # print(traversal_list)
         
         return traversal_list
 
@@ -147,9 +147,9 @@ class Tree:
 
 ##### postoder - APPEND LAST    (right, left, root)
     def postorder_helper(self, current, traversal_list):
-        if current != None:
+        if current:
             self.postorder_helper(current.left, traversal_list)
-            self.postorder_helper(current.right, traversal_list)
+            self.postordaer_helper(current.right, traversal_list)
             traversal_list.append(current.dict())
 
     # Time Complexity: 
@@ -173,7 +173,7 @@ class Tree:
         return max(height_left, height_right) + 1
         
         # traverse the left
-        #traverse right
+        # traverse right
     def height(self):
         return self.height_helper(self.root)
 
