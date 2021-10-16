@@ -23,8 +23,8 @@ class Tree:
     def __init__(self):
         self.root = None
 
-    # Time Complexity:
-    # Space Complexity:
+    # Time Complexity: O(log N)
+    # Space Complexity: O(1)
 
     def add_helper(self, current_node, key, value):
         if current_node == None:
@@ -72,8 +72,8 @@ class Tree:
 
         return None
 
-    # Time Complexity:
-    # Space Complexity:
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def inorder_helper(self, current, traversal_list):
         if not current:
             return traversal_list
@@ -88,8 +88,8 @@ class Tree:
         traversal_list = []
         return self.inorder_helper(self.root, traversal_list)
 
-    # Time Complexity:
-    # Space Complexity:
+    # Time Complexity: O(n)
+    # Space Complexity:O(n)
     def preorder_helper(self, current, traversal_list):
         if current:
             obj = {'key': current.key, 'value': current.value}
@@ -103,13 +103,13 @@ class Tree:
 
         return traversal_list
 
-    # Time Complexity:
-    # Space Complexity:
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def postorder(self):
         pass
 
-    # Time Complexity:
-    # Space Complexity:
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def height(self):
         if self.root:
             return self.root.height()
