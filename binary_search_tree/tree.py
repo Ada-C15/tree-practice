@@ -55,7 +55,7 @@ class Tree:
             # else:
             #     parent.right = TreeNode(key, value)
 
-    # Time Complexity: O(log N)
+    # Time Complexity: O(n)
     # Space Complexity: O(1)
     def find(self, key):
         if self.root == None:
