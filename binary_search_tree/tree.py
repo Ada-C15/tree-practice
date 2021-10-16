@@ -24,16 +24,16 @@ class Tree:
                 current_node.right, key, value)
         return current_node
 
-    # Time Complexity:
-    # Space Complexity:
+    # Time Complexity: O logn
+    # Space Complexity: O n
     def add(self, key, value=None):
         if self.root == None:
             self.root = TreeNode(key, value)
         else:
             self.add_helper(self.root, key, value)
 
-    # Time Complexity:
-    # Space Complexity:
+    # Time Complexity: O log n
+    # Space Complexity: O n
     def find(self, key):
         if self.root == None:
             return None
@@ -74,8 +74,8 @@ class Tree:
             self.postorder_helper(current.left, traversal_list)
             self.postorder_helper(current.right, traversal_list)
             traversal_list.append({'key': current.key, 'value': current.value})
-    # Time Complexity:
-    # Space Complexity:
+    # Time Complexity: O Log n
+    # Space Complexity: O n
 
     def postorder(self):
         traversal_list = []
@@ -88,8 +88,8 @@ class Tree:
         height_left = self.height_help(current_node.left)
         height_right = self.height_help(current_node.right)
         return max(height_left, height_right) + 1
-    # Time Complexity:
-    # Space Complexity:
+    # Time Complexity: O log n
+    # Space Complexity: O (1)
 
     def height(self):
         return self.height_help(self.root)
