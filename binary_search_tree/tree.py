@@ -39,6 +39,13 @@ class Tree:
             return None
 
         current = self.root
+        # if current.key == key:
+        #     return current.value
+        # elif current.key < key:
+        #     # return value if key is in right sub tree
+        #     return self.find(current.right)
+        # else:
+        #     return self.find(current.left)
         while current != None:
             if current.key == key:
                 return current.value
@@ -47,6 +54,12 @@ class Tree:
             else:
                 current = current.left
         return None
+
+    def inorder_helper(self, current, traversal_list):
+        if current != None:
+            self.inorder_helper(current.left, traversal_list)
+            traversal_list.append({'key': current.key, 'value': current.value})
+            self.inorder_helper(current.right, traversal_list)
 
     # Time Complexity:
     # Space Complexity:
