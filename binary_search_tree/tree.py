@@ -28,8 +28,8 @@ class Tree:
             current_node.right = self.add_helper(current_node.right, key, value)
         return current_node
 
-    # Time Complexity: 
-    # Space Complexity: 
+    # Time Complexity: O(log n) if tree is balanced
+    # Space Complexity: O(n) ?
     def add(self, key, value = None):
         
         if self.root == None:
@@ -38,9 +38,9 @@ class Tree:
             self.add_helper(self.root, key, value)
 
 
-    # Time Complexity: 
-    # Space Complexity: 
-    def find(self, key):
+    # Time Complexity: O(log n) if tree is balanced
+    # Space Complexity: O(n) ?
+    def find(self, key): 
         # search function in notebook
 
         if self.root == None:
@@ -61,8 +61,8 @@ class Tree:
         
         return None 
 
-    # Time Complexity: 
-    # Space Complexity: 
+    # Time Complexity: O(n)
+    # Space Complexity: Dependent on the size/height of tree, O(h)
     def inorder(self):
         
         tree_arr = []
@@ -91,8 +91,8 @@ class Tree:
 
         return tree_arr
         
-    # Time Complexity: 
-    # Space Complexity:     
+    # Time Complexity: O(n)
+    # Space Complexity: Dependent on the size/height of tree, O(h)
     def preorder(self):
         
         tree_arr = []
@@ -121,8 +121,8 @@ class Tree:
         return tree_arr
 
 
-    # Time Complexity: 
-    # Space Complexity:     
+    # Time Complexity: O(n)
+    # Space Complexity: Dependent on the size/height of tree, O(h)
     def postorder(self):
         
         tree_arr = []
@@ -150,8 +150,8 @@ class Tree:
 
         return tree_arr
 
-    # Time Complexity: 
-    # Space Complexity:     
+    # Time Complexity: O(n)
+    # Space Complexity: Dependent on the size/height of tree, O(h)
     def height(self):
         
         if self.root == None:
