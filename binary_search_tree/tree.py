@@ -91,25 +91,39 @@ class Tree:
     # Time Complexity: O(n)
     # Space Complexity:O(n)
     def preorder_helper(self, current, traversal_list):
+        if not current:
+            return traversal_list
         if current:
             obj = {'key': current.key, 'value': current.value}
             traversal_list.append(obj)
             self.preorder_helper(current.left, traversal_list)
             self.preorder_helper(current.right, traversal_list)
+            return traversal_list
 
     def preorder(self):
         traversal_list = []
-        self.preorder_helper(self.root, traversal_list)
+        return self.preorder_helper(self.root, traversal_list)
 
-        return traversal_list
+    def postorder_helper(self, current, traversal_list):
+        if not current:
+            return traversal_list
+        if current:
+            self.postorder_helper(current.left, traversal_list)
+            self.postorder_helper(current.right, traversal_list)
+            obj = {'key': current.key, 'value': current.value}
+            traversal_list.append(obj)
+            return traversal_list
 
     # Time Complexity: O(n)
     # Space Complexity: O(n)
+
     def postorder(self):
-        pass
+        traversal_list = []
+        return self.postorder_helper(self.root, traversal_list)
 
     # Time Complexity: O(n)
     # Space Complexity: O(n)
+
     def height(self):
         if self.root:
             return self.root.height()
@@ -121,11 +135,13 @@ class Tree:
 #   # Time Complexity:
 #   # Space Complexity:
 
+
     def bfs(self):
         pass
 
 
 #   # Useful for printing
+
 
     def to_s(self):
         return f"{self.inorder()}"
