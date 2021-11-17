@@ -143,12 +143,24 @@ class Tree:
         #     self.height = height
         #     return self.height
        
-        if self.root == None:
-            return 0
-            
+        return self.height_helper(self.root)
         
+ 
+ 
+    def height_helper(self, current):
+    
+        # Check if the binary tree is empty
+        if current is None:
+            # If TRUE return 0
+            return 0 
+        # Recursively call height of each node
+        leftAns = self.height_helper(current.left)
+        rightAns = self.height_helper(current.right)
+        my_max = max(leftAns, rightAns) 
+        # Return max(leftHeight, rightHeight) at each iteration
+        return my_max + 1
+    
 
-       
 
 #   # Optional Method
 #   # Time Complexity: 
