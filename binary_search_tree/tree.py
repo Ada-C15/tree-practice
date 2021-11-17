@@ -15,7 +15,7 @@ class Tree:
     def __init__(self, height = None):
         self.root = None
         self.nodes = []
-        self.treeheight = 0
+        # self.treeheight = 0
 
     # Time Complexity: 
     # Space Complexity: 
@@ -51,7 +51,7 @@ class Tree:
 
     def create_dict(self, TreeNode):
         return { "key": TreeNode.key,
-                   "value": TreeNode.value }
+                 "value": TreeNode.value }
         
 
     # Time Complexity: 
@@ -146,20 +146,9 @@ class Tree:
         if self.root == None:
             return 0
             
-        current = self.root
-        while self.current != None:
-            parent = current
-            if current.key > key:
-                current = current.left
-            else:
-                current = current.right
-            if parent.key > key:
-                parent.left = TreeNode(key,value)
-            else:
-                parent.right = TreeNode(key,value)
+        
 
-            self.myheight +=1
-        return myheight
+       
 
 #   # Optional Method
 #   # Time Complexity: 
