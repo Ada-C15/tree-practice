@@ -154,9 +154,9 @@ class Tree:
             # If TRUE return 0
             return 0 
         # Recursively call height of each node
-        leftAns = self.height_helper(current.left)
-        rightAns = self.height_helper(current.right)
-        my_max = max(leftAns, rightAns) 
+        leftHeight = self.height_helper(current.left)
+        rightHeight = self.height_helper(current.right)
+        my_max = max(leftHeight, rightHeight) 
         # Return max(leftHeight, rightHeight) at each iteration
         return my_max + 1
     
