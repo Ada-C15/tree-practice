@@ -25,9 +25,11 @@ def test_add_and_find(tree_with_nodes):
 def test_find_returns_none_for_empty_tree(empty_tree):
     assert empty_tree.find(5) == None
 
+def test_find_returns_value_in_tree(tree_with_nodes):
+    assert tree_with_nodes.find(25) == "Kari"
+
 def test_find_returns_none_for_values_not_in_tree(tree_with_nodes):
     assert tree_with_nodes.find(6) == None
-
 
 def test_inorder_with_empty_tree(empty_tree):
     answer = empty_tree.inorder()
