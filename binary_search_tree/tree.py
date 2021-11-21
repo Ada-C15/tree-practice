@@ -141,7 +141,7 @@ class Tree:
     def height(self):   
         # if self.root == None:
         #     self.height = height
-        #     return self.height
+        #     return self.height=
        
         return self.height_helper(self.root)
         
@@ -165,8 +165,21 @@ class Tree:
 #   # Optional Method
 #   # Time Complexity: 
 #   # Space Complexity: 
+#   Create function processing root
+#   If null empty array
+#   Create a queque only the root then Loop 
+#   Make an array empty but will contain dictionaries at end
+#   While que not empty 
+#   Before pop head get info of current node add dict to the final array 
+#   Encue the children insert at the tail 
     def bfs(self):
-        pass
+        if self.root is None:
+            return []
+        while self.current != None:
+            
+
+        
+    
 
         
 
