@@ -133,13 +133,29 @@ class Tree:
             return self.height_helper(self.root)
 
 
+
 #   # Optional Method
-#   # Time Complexity:
-#   # Space Complexity:
+#   # Time Complexity: O(n)
+#   # Space Complexity:O(n)
 
     def bfs(self):
-        pass
+        result = list()
 
+        if self.root is None:
+            return result
+
+        queue = list()
+        queue.append(self.root)
+
+        while len(queue) > 0:
+            current = queue.pop(0)
+            if current.left:
+                queue.append(current.left)
+            if current.right:
+                queue.append(current.right)
+            result.append(current.to_json())
+        
+        return result
 
 #   # Useful for printing
 
