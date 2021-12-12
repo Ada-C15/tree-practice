@@ -15,6 +15,8 @@ class Tree:
     def __init__(self, height = None):
         self.root = None
         self.nodes = []
+        #hold for the bfs
+        self.queque = []
         # self.treeheight = 0
 
     # Time Complexity: O(n) because looping through all the nodes
@@ -163,11 +165,11 @@ class Tree:
 
 
 #   # Optional Method
-#   # Time Complexity: 
+#   # Time Complexity: n3
 #   # Space Complexity: 
 #   Create function processing root
 #   If null empty array
-#   Create a queque only the root then Loop 
+#   Create a array use only the root then Loop 
 #   Make an array empty but will contain dictionaries at end
 #   While que not empty 
 #   Before pop head get info of current node add dict to the final array 
