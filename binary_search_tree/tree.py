@@ -17,8 +17,8 @@ class Tree:
         self.nodes = []
         # self.treeheight = 0
 
-    # Time Complexity: 
-    # Space Complexity: 
+    # Time Complexity: O(n) because looping through all the nodes
+    # Space Complexity: O(n) because you need to add a node for each key, value
     def add(self, key, value = None):
         
         if self.root == None:
@@ -54,8 +54,8 @@ class Tree:
                  "value": TreeNode.value }
         
 
-    # Time Complexity: 
-    # Space Complexity: 
+    # Time Complexity: log(n) because we are examining only half of the nodes
+    # Space Complexity: O(1) because we are not allocating any memeory
     # self refers to object the class is making
     def find(self, key):
         if self.root == None:
@@ -72,7 +72,7 @@ class Tree:
         return None
 
 
-    # Time Complexity: 
+    # Time Complexity:  Since it is recursive it is O(N) because the stack size will depend on the input size.  Behind the scenes a new stack frame is created to hold the return address and variables you create in the new call.
     # Space Complexity: 
 
     # first go to left 
@@ -176,7 +176,8 @@ class Tree:
         if self.root is None:
             return []
         while self.current != None:
-            
+            pass
+
 
         
     
@@ -185,7 +186,7 @@ class Tree:
 
 
 #   # Useful for printing
-    def to_s(self):
+    def to_str(self):
         return f"{self.inorder()}"
 
 # tree = Tree()
