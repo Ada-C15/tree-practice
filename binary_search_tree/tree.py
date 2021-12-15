@@ -18,6 +18,7 @@ class Tree:
         #hold for the bfs
         self.queque = []
         # self.treeheight = 0
+        self.bfs_nodes = []
 
     # Time Complexity: O(n) because looping through all the nodes
     # Space Complexity: O(n) because you need to add a node for each key, value
@@ -38,17 +39,6 @@ class Tree:
                 parent.left = TreeNode(key,value)
             else:
                 parent.right = TreeNode(key,value)
-
-        # if key is None:
-        #     return TreeNode(key,value)
-        # else:
-        #     if key.val == key:
-        #         return key
-        #     elif key.val < key:
-        #         key.right = add(TreeNode.right, key)
-        #     else:
-        #         key.left = add(root.left, key)
-        # return root
         
 
     def create_dict(self, TreeNode):
@@ -57,7 +47,7 @@ class Tree:
         
 
     # Time Complexity: log(n) because we are examining only half of the nodes
-    # Space Complexity: O(1) because we are not allocating any memeory
+    # Space Complexity: O(1) because we are not allocating any memory
     # self refers to object the class is making
     def find(self, key):
         if self.root == None:
@@ -74,8 +64,8 @@ class Tree:
         return None
 
 
-    # Time Complexity:  Since it is recursive it is O(N) because the stack size will depend on the input size.  Behind the scenes a new stack frame is created to hold the return address and variables you create in the new call.
-    # Space Complexity: 
+    # Time Complexity:  O(N).  Since it is recursive it is O(N) because the stack size will depend on the input size.  Behind the scenes a new stack frame is created to hold the return address and variables you create in the new call.
+    # Space Complexity: 0(N)  depends on input size
 
     # first go to left 
   
@@ -115,8 +105,8 @@ class Tree:
         self.inorder_traverse(self.root, node_list)  
         return node_list
 
-    # Time Complexity: 
-    # Space Complexity:     
+    # Time Complexity: 0(N)
+    # Space Complexity: Space Complexity: 0(N)  depends on input size    
     def preorder(self):
         node_list = []
 
@@ -127,8 +117,8 @@ class Tree:
 
      
 
-    # Time Complexity: 
-    # Space Complexity:     
+    # Time Complexity: 0(N)
+    # Space Complexity: depends on input size        
     def postorder(self):
         node_list = []
 
@@ -138,13 +128,9 @@ class Tree:
         return node_list
         
 
-    # Time Complexity: 
-    # Space Complexity:     
+    # Time Complexity: 0(1) constant time
+    # Space Complexity:  0(1)   
     def height(self):   
-        # if self.root == None:
-        #     self.height = height
-        #     return self.height=
-       
         return self.height_helper(self.root)
         
  
@@ -165,7 +151,7 @@ class Tree:
 
 
 #   # Optional Method
-#   # Time Complexity: n3
+#   # Time Complexity: 
 #   # Space Complexity: 
 #   Create function processing root
 #   If null empty array
@@ -173,19 +159,15 @@ class Tree:
 #   Make an array empty but will contain dictionaries at end
 #   While que not empty 
 #   Before pop head get info of current node add dict to the final array 
-#   Encue the children insert at the tail 
+#   Encue the children insert at the tail
+#   https://www.geeksforgeeks.org/level-order-tree-traversal/
     def bfs(self):
+       
         if self.root is None:
             return []
-        while self.current != None:
-            pass
-
-
+        pass
+        # while self.current != None:
         
-    
-
-        
-
 
 #   # Useful for printing
     def to_str(self):
