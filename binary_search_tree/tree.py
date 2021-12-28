@@ -7,7 +7,6 @@ class TreeNode:
         self.value = val
         self.left = None
         self.right = None
-# we need to sort the values by key, or else v and k will remain the same.
 class Tree:
     def __init__(self):
         self.root = None
@@ -19,6 +18,7 @@ class Tree:
         if not self.root:
             self.root = n_node
             return None
+            
         current = self.root
 
         while True:
@@ -31,7 +31,7 @@ class Tree:
             elif current.key > key:
                 current = current.left
             else:
-                current = current.left
+                current = current.right
 
 
     # Time Complexity: O(log n)
@@ -45,7 +45,6 @@ class Tree:
                 current = current.left
             else: current = current.right
         return None
-
 
     # Time Complexity: O(n)
     # Space Complexity: O(n)
@@ -99,7 +98,7 @@ class Tree:
         right = Tree()
         right.root = self.root.right
 
-        return max(left.heigh(),right.height()) +1
+        return max(left.height(),right.height()) +1
 
 
 #   # Optional Method
