@@ -163,9 +163,27 @@ class Tree:
 #   https://www.geeksforgeeks.org/level-order-tree-traversal/
     def bfs(self):
        
+        # if self.root is None:
+        #     return [{}]
+
         if self.root is None:
-            return []
-        pass
+            return 
+        self.queque = [self.root]
+
+        while len(self.queque) > 0:
+            cur_node = self.queque.pop(0)
+            my_dict_of_current_node = self.create_dict(cur_node)        
+            self.bfs_nodes.append(my_dict_of_current_node)      
+
+            if cur_node.left is not None:
+                self.queque.append(cur_node.left)
+
+            if cur_node.right is not None:
+                self.queque.append(cur_node.right) 
+
+        return self.bfs_nodes
+          
+        
         # while self.current != None:
         
 
