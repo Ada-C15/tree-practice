@@ -8,9 +8,7 @@ class TreeNode:
         self.left = None
         self.right = None
         # self.val = key
-        
-
-
+    
 class Tree:
     def __init__(self, height = None):
         self.root = None
@@ -68,7 +66,6 @@ class Tree:
     # Space Complexity: 0(N)  depends on input size
 
     # first go to left 
-  
     # add to the list 
     # go to the right
     
@@ -118,7 +115,7 @@ class Tree:
      
 
     # Time Complexity: 0(N)
-    # Space Complexity: depends on input size        
+    # Space Complexity: 0(N) depends on input size        
     def postorder(self):
         node_list = []
 
@@ -151,8 +148,8 @@ class Tree:
 
 
 #   # Optional Method
-#   # Time Complexity: 
-#   # Space Complexity: 
+#   # Time Complexity: O(N) goes through all the nodes
+#   # Space Complexity: O(N) all the nodes
 #   Create function processing root
 #   If null empty array
 #   Create a array use only the root then Loop 
@@ -162,9 +159,6 @@ class Tree:
 #   Encue the children insert at the tail
 #   https://www.geeksforgeeks.org/level-order-tree-traversal/
     def bfs(self):
-       
-        # if self.root is None:
-        #     return [{}]
 
         if self.root is None:
             return 
@@ -181,33 +175,11 @@ class Tree:
             if cur_node.right is not None:
                 self.queque.append(cur_node.right) 
 
-        return self.bfs_nodes
-          
-        
-        # while self.current != None:
-        
+        return self.bfs_nodes 
 
 #   # Useful for printing
     def to_str(self):
         return f"{self.inorder()}"
-
-# tree = Tree()
-# print(tree.root == None)
-# tree.add(5, "Peter")
-# tree.add(7,"Ada")
-# tree.add(10)
-# tree.add(3)
-# tree.add(4)
-
-# print(tree.root.key == 5)
-# print(tree.root.right.key == 7)
-# print(tree.root.right.right.key == 10)
-# print(tree.root.left.key ==3)
-# print(tree.root.left.right.key ==4)
-
-# print(tree.find(5) == "Peter")
-# print(tree.find(7) == "Ada")
-# print(tree.find(4) == 4)
 
 
 
