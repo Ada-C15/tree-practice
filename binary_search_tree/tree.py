@@ -161,7 +161,7 @@ class Tree:
     def bfs(self):
 
         if self.root is None:
-            return 
+            return []
         self.queque = [self.root]
 
         while len(self.queque) > 0:
