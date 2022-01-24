@@ -1,10 +1,6 @@
-'''the node stores a key value pair 
-    with the key being how we are sorting and the value being the data
-    '''
+
 class TreeNode: 
     def __init__(self, key, value = None):
-        # if the value is none the key will be the value
-        # this allows the tree to just be a tree of integers
         if value == None:
             value = key
 
@@ -12,9 +8,7 @@ class TreeNode:
         self.value = value
         self.left = None
         self.right = None
-        
 
-## tree class with a __init__ function
 class Tree:
     def __init__(self):
         self.root = None
@@ -22,7 +16,6 @@ class Tree:
     def add_helper(self, current, key, value):
         if not current:
             return TreeNode(key,value)
-
         if key <= current.key:
             current.left = self.add_helper(current.left,key,value)
         else:
@@ -39,8 +32,6 @@ class Tree:
             self.add_helper(self.root, key,value)
 
         
-
-
     # Time Complexity: O(n)
     # Space Complexity: O(n)
     def find(self, key):
@@ -52,11 +43,8 @@ class Tree:
                 current = current.left
             else:
                 current = current.right
-
         return None
         
-
-
     # Time Complexity: O(n)
     # Space Complexity: O(n)
     def inorder(self):
