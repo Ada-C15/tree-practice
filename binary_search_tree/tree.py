@@ -28,8 +28,8 @@ class Tree:
                 self.add_helper(current_node.right, new_node)
          
     
-    # Time Complexity: 
-    # Space Complexity: 
+    # Time Complexity: O(log(n))
+    # Space Complexity: O(1)
     def add(self, key, value = None):
 
         if self.root == None:
@@ -45,7 +45,7 @@ class Tree:
             return None
 
         if current_node.key == key:
-            return current_node
+            return current_node.value
 
         if current_node.key > key:
             return self.find_helper(current_node.left, key)
@@ -53,10 +53,10 @@ class Tree:
             return self.find_helper(current_node.right, key)
 
 
-    # Time Complexity: 
-    # Space Complexity: 
+    # Time Complexity: O(log(n)) 
+    # Space Complexity: O(1)
     def find(self, key):
-        return self.find_helper(self.root, key).value
+        return self.find_helper(self.root, key)
 
 
     def inorder_helper(self, current_node, inorder_return):
@@ -72,8 +72,8 @@ class Tree:
 
         return inorder_return 
         
-    # Time Complexity: 
-    # Space Complexity: 
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
     def inorder(self):
         inorder_return = []
         return self.inorder_helper(self.root, inorder_return)
@@ -92,8 +92,8 @@ class Tree:
 
         return preorder_return
 
-    # Time Complexity: 
-    # Space Complexity:     
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)  
     def preorder(self):
         preorder_return = []
         return self.preorder_helper(self.root, preorder_return)
@@ -112,8 +112,8 @@ class Tree:
 
         return postorder_return
 
-    # Time Complexity: 
-    # Space Complexity:     
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)  
     def postorder(self):
         postorder_return = []
         return self.postorder_helper(self.root, postorder_return)
@@ -128,8 +128,8 @@ class Tree:
 
         return max(left_node, right_node) + 1
 
-    # Time Complexity: 
-    # Space Complexity:     
+    # Time Complexity: O(n) 
+    # Space Complexity: O(1)     
     def height(self):
         return self.height_helper(self.root)
 
