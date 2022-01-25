@@ -134,13 +134,13 @@ class Tree:
         return self.height_helper(self.root)
 
 
-#   # Optional Method
-#   # Time Complexity: 
-#   # Space Complexity: 
+# Optional Method
+# Time Complexity: 
+# Space Complexity: 
     def bfs(self):
         pass
 
 
-#   # Useful for printing
+# Useful for printing
     def to_s(self):
         return f"{self.inorder()}"
